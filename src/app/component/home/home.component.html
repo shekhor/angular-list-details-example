@@ -1,0 +1,5 @@
+
+<div style="display: flex;">
+    <app-list style="display:flex" (itemSelected)="displayItem($event)"></app-list>
+    <app-detail style="margin-left: 100px;" [item]="selectedItem"></app-detail>
+</div>

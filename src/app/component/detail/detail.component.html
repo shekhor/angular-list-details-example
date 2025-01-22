@@ -1,0 +1,10 @@
+<div *ngIf="item; else noItemSelected">
+    <h3>Item Details</h3>
+    <p><strong>Item Name:</strong> {{ item.name }}</p>
+    <p><strong>Description:</strong> {{ item.description }}</p>
+  </div>
+  
+  <ng-template #noItemSelected>
+    <p>Please select an item to view its details.</p>
+  </ng-template>
+  
