@@ -1,0 +1,86 @@
+<form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+    <div>
+      <label for="name">Name:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        ngModel
+        #name="ngModel"
+        required
+        minlength="5"
+      />
+    </div>
+    <div *ngIf="name.invalid && name.touched">
+      <p *ngIf="name.errors?.['required']">Name is required</p>
+      <p *ngIf="name.errors?.['minlength']">
+        Name must be at least 5 characters long
+      </p>
+    </div>
+  
+    <div>
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        ngModel
+        #email="ngModel"
+        required
+        email
+      />
+    </div>
+    <div *ngIf="email.invalid && email.touched">
+      <p *ngIf="email.errors?.['required']">Email is required</p>
+      <p *ngIf="email.errors?.['email']">Please enter a valid email address</p>
+    </div>
+  
+    <div>
+      <label for="phone">Phone no:</label>
+      <input type="tel" id="phone" name="phone" ngModel />
+    </div>
+  
+    <div>
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        ngModel
+        #password="ngModel"
+        required
+        minlength="8"
+      />
+    </div>
+    <div *ngIf="password.invalid && password.touched">
+      <p *ngIf="password.errors?.['required']">Password is required</p>
+      <p *ngIf="password.errors?.['minlength']">
+        Password must be at least 8 characters long
+      </p>
+    </div>
+<!-- 
+    <div>
+        <label for="confirmPassword">Password:</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          ngModel
+          #confirmPassword="ngModel"
+          required
+          minlength="8"
+        />
+      </div>
+      <div *ngIf="confirmPassword.invalid && password.touched">
+        <p *ngIf="confirmPassword.errors?.['required']">Password is required</p>
+        <p *ngIf="confirmPassword.errors?.['minlength']">
+          Password must be at least 8 characters long
+        </p>
+        <p *ngIf="confirmPassword.errors['matching']">
+            Confirm Password does not match
+          </p>
+      </div> -->
+  
+    <button type="submit" [disabled]="myForm.invalid">Submit</button>
+  </form>
+  

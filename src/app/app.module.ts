@@ -9,6 +9,9 @@ import { HeaderComponent } from './component/header/header.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { HomeComponent } from './component/home/home.component';
 import { AllProductsComponent } from './component/all-products/all-products.component';
+import { RegistrationComponent } from './component/registration/registration.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SignupComponent } from './component/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -18,11 +21,15 @@ import { AllProductsComponent } from './component/all-products/all-products.comp
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    AllProductsComponent
+    AllProductsComponent,
+    RegistrationComponent,
+    SignupComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideClientHydration(withEventReplay())
