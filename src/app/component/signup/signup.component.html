@@ -33,46 +33,49 @@
   
     <div>
       <label for="phone">Phone no:</label>
-      <input type="tel" id="phone" name="phone" formControlName="phone" />
-    </div>
-  
-    <div>
-      <label for="password">Password:</label>
-      <input
-        type="password"
-        id="password"
-        name="password"
-        formControlName="password"
-        required
-        minlength="8"
-      />
-
-      <div *ngIf="myForm.get('password')?.invalid && myForm.get('password')?.touched">
-        <p *ngIf="myForm.get('password')?.hasError('required')">Password is required</p>
-        <p *ngIf="myForm.get('password')?.hasError('minlength')">
-          Password must be at least 8 characters long
-        </p>
-      </div>
+      <input type="text" id="phone" name="phone" formControlName="phone" />
     </div>
     
-
-    <div>
-        <label for="confirmPassword">Confirm password: </label>
-        <input
-          type="password"
-          id="confirmPassword"
-          name="confirmPassword"
-          formControlName="confirmPassword"
-          required
-          minlength="8"
-        />
-        <div *ngIf="myForm.invalid && myForm.touched">
-            <p *ngIf="myForm.get('confirmPassword')?.hasError('required')">Password is required</p>
-            <p *ngIf="myForm.hasError('passwordMismatch')">
-              Password and confirm password need to be same.
-            </p>
-        </div>
-      </div>
+    <div formGroupName="passwordGroup">
+        <div>
+            <label for="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              formControlName="password"
+              required
+              minlength="8"
+            />
+      
+            <div *ngIf="myForm.get('passwordGroup.password')?.invalid && myForm.get('passwordGroup.password')?.touched">
+              <p *ngIf="myForm.get('passwordGroup.password')?.hasError('required')">Password is required</p>
+              <p *ngIf="myForm.get('passwordGroup.password')?.hasError('minlength')">
+                Password must be at least 8 characters long
+              </p>
+            </div>
+          </div>
+          
+      
+          <div>
+              <label for="confirmPassword">Confirm password: </label>
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                formControlName="confirmPassword"
+                required
+                minlength="8"
+              />
+              <div *ngIf="myForm.get('passwordGroup.confirmPassword')?.invalid && myForm.get('passwordGroup.confirmPassword')?.touched">
+                  <p *ngIf="myForm.get('passwordGroup.confirmPassword')?.hasError('required')">Password is required</p>
+                  <p *ngIf="myForm.get('passwordGroup')?.hasError('passwordMismatch')">
+                    Password and confirm password need to be same.
+                  </p>
+              </div>
+            </div>
+    </div>
+    
     <button type="submit">Submit</button>
   </form>
   

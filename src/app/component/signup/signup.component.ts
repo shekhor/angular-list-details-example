@@ -15,10 +15,17 @@ export class SignupComponent {
       name: new FormControl('', [Validators.required, Validators.minLength(5)]),
       email: new FormControl('', [Validators.required, Validators.email]),
       phone: new FormControl(''),
-      password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-      confirmPassword: new FormControl('', [Validators.required, Validators.minLength(8)])
+
+      passwordGroup: new FormGroup(
+        {
+          password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+          confirmPassword: new FormControl('', [Validators.required, Validators.minLength(8)])
+        },
+        {validators: this.confirmPasswordValidator}
+      )
+      
     },
-    {validators: this.confirmPasswordValidator}
+    
     );
   }
 
@@ -31,6 +38,7 @@ export class SignupComponent {
     }
     return null;
   }
+
   onSubmit(){
     console.log("Name is:", this.myForm.value.name);
     console.log("Email is:", this.myForm.value.email);

@@ -19,4 +19,8 @@ export class StaticDataService {
   getItemById(id: number){
     return this.items[id];
   }
+
+  addItem(item: { id: number, name: string; description: string }) {
+    this.items.push(item);
+  }
 }
